@@ -72,3 +72,66 @@ html.js{scroll-behavior:auto}
 	.stage-caption{bottom:1%;white-space:normal;width:90%;line-height:1.6}
 }
 .footer .model-credit{font-size:8px;letter-spacing:.04em;color:var(--faint);text-decoration:none}.footer .model-credit:hover{color:var(--gold)}
+
+/* ===== HERO MOBILE — texto em cima, palco 3D embaixo (nada sobreposto) =====
+   Só vale até 760px; desktop/tablet continuam exatamente como estavam.
+   O palco deixa de ser position:absolute e passa a ocupar o espaço que sobra
+   abaixo do texto, então os objetos 3D nunca ficam por baixo dos textos. */
+@media (max-width:760px){
+	.hero{
+		height:100vh;height:100svh;min-height:0;
+		padding:84px 7% 46px;
+		display:flex;flex-direction:column;align-items:stretch;
+	}
+
+	/* --- zona do texto --- */
+	.hero-copy{flex:0 0 auto;max-width:none;padding:0}
+	.hero .eyebrow{font-size:9px;letter-spacing:.14em}
+	.hero h1{font-size:clamp(38px,11.4vw,58px);line-height:1.03;margin:14px 0 10px}
+	.hero .intro{font-size:clamp(13.5px,3.8vw,15.5px);line-height:1.6;max-width:none}
+	.primary-link{display:flex;width:100%;justify-content:space-between;gap:0;margin-top:16px;padding:13px 16px}
+	.primary-link:hover{gap:0}
+	.edition{display:none}
+
+	/* --- zona 3D: ocupa o que sobra abaixo do texto --- */
+	.stage{
+		position:relative;top:auto;left:auto;
+		flex:1 1 0;width:100%;height:auto;min-height:0;
+		margin-top:6px;padding-bottom:34px; /* reserva a legenda */
+		opacity:1;z-index:1;
+	}
+	.stage #product-model{
+		align-self:stretch;height:auto;min-height:0;max-height:none;
+		width:min(64vw,310px);max-width:none;transform:none;
+	}
+	.halo-one{width:auto;height:min(94%,72vw);aspect-ratio:1}
+	.halo-two{width:min(58vw,70%);height:min(98%,80vw)}
+	.moon-disc{width:auto;height:min(60%,43vw);aspect-ratio:1}
+
+	/* flores e pedra ficam nos cantos de baixo, ao lado do frasco */
+	.plant-left{width:27vw;height:min(33vw,40%);left:0;bottom:calc(34px + 26%)}
+	.plant-right{width:31vw;height:min(39vw,46%);right:-3%;bottom:34px}
+	.stone-left{width:24vw;height:min(20vw,26%);left:2%;bottom:34px}
+	.spark-a{left:10%;top:6%}
+	.spark-b{right:10%;top:12%}
+	.spark-c{left:24%;bottom:calc(34px + 8%)}
+
+	.stage-caption{bottom:2px;width:92%;font-size:8px;line-height:1.6;white-space:normal;text-align:center}
+	.stage-caption i{display:block;width:0;height:0;margin:0} /* quebra limpa em 2 linhas */
+	.scroll-hint{bottom:12px}
+}
+
+/* celulares mais baixos (ex.: iPhone SE, Androids pequenos): compacta o texto
+   para sobrar espaço para o frasco */
+@media (max-width:760px) and (max-height:720px){
+	.hero{padding-top:76px;padding-bottom:42px}
+	.hero h1{font-size:clamp(34px,10vw,46px);margin:10px 0 8px}
+	.hero .intro{font-size:13px;line-height:1.5}
+	.primary-link{margin-top:12px;padding:11px 14px}
+}
+@media (max-width:760px) and (max-height:620px){
+	.hero .eyebrow{display:none}
+	.hero h1{margin-top:0}
+	.stage-caption{display:none}
+	.stage{padding-bottom:8px}
+}
