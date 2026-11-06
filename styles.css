@@ -91,6 +91,7 @@ html.js{scroll-behavior:auto}
 	.hero .intro{font-size:clamp(13.5px,3.8vw,15.5px);line-height:1.6;max-width:none}
 	.primary-link{display:flex;width:100%;justify-content:space-between;gap:0;margin-top:16px;padding:13px 16px}
 	.primary-link:hover{gap:0}
+	.primary-link span{display:none} /* ↘ vira emoji no iOS/Android; some só no celular */
 	.edition{display:none}
 
 	/* --- zona 3D: ocupa o que sobra abaixo do texto --- */
